@@ -20,11 +20,18 @@ describe("GET /counter", () => {
   });
 
   // Failing test (should be 0, but we expect 1 for the test to fail)
-  it("should return counter value as 1", async () => {
+  it("should return counter value as 0", async () => {
     const res = await request(app).get("/counter");
-    expect(res.text).toContain("Clicks: 1"); // This will fail since the initial value is 0
+    expect(res.text).toContain("Clicks: 0"); // This will fail since the initial value is 0
   });
+
+//   it("should return counter value as 1", async () => {
+//     const res = await request(app).get("/counter");
+//     expect(res.text).toContain("Clicks: 1"); // This will fail since the initial value is 0
+//   });
 });
+
+
 
 describe("POST /api/counter/increment", () => {
   it("should increment counter by 1", async () => {
