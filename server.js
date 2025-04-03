@@ -1,17 +1,17 @@
 const express = require("express");
-const app = express();
+const path = require("path");
 
+const app = express();
 const port = process.env.PORT || 5000;
-const host = "0.0.0.0";  // <-- Ensure external access
+const host = "0.0.0.0";
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  return res.status(200).send({
-    message: "Hello World!",
-  });
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(port, host, () => {
-  console.log(`Listening on http://${host}:${port}`);
+  console.log(`Server running at http://${host}:${port}`);
 });
-
-module.exports = app;
