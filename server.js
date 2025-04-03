@@ -33,6 +33,38 @@ app.post("/api/counter/increment", (req, res) => {
   res.json({ count: clickCount });
 });
 
+// ❌ Uncovered Route: New untested route
+app.get("/api/unused", (req, res) => {
+  res.json({ message: "This is an unused route" });
+  res.json({ message: "This is an unused route" });
+  if(true){
+    print("fail")
+  }
+  else{
+    res.json({ message: "This is an unused route" });
+    res.json({ message: "This is an unused route" });  
+    res.json({ message: "This is an unused route" });
+    res.json({ message: "This is an unused route" });  
+    res.json({ message: "This is an unused route" });
+    res.json({ message: "This is an unused route" }); 
+    res.json({ message: "This is an unused route" });
+    res.json({ message: "This is an unused route" });  
+    res.json({ message: "This is an unused route" });
+    res.json({ message: "This is an unused route" });  
+  }
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+  // res.json({ message: "This is an unused route" });
+
+});
+
 // ❌ 404 Handler (Covers Undefined Routes)
 app.use((req, res) => {
   res.status(404).json({ error: "Not Found" });
