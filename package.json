@@ -4,13 +4,14 @@
   "private": "true",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "nyc --reporter=text --reporter=lcov jest",
     "start": "node server.js"
   },
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0",
     "mocha": "^10.2.0",
+    "nyc": "^17.1.0",
     "supertest": "^6.3.4"
   },
   "dependencies": {
