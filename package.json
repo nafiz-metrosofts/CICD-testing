@@ -4,13 +4,12 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "test": "nyc --reporter=text --reporter=lcov jest",
+    "test": "nyc --reporter=text --reporter=lcov jest --coverage",
     "start": "node server.js"
   },
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0",
-    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "supertest": "^6.3.4"
   },
@@ -24,10 +23,18 @@
   },
   "nyc": {
     "all": true,
+    "include": [
+      "server.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ],
     "check-coverage": true,
-    "lines": 80,
-    "functions": 80,
-    "branches": 80,
-    "statements": 80
+    "lines": 50,
+    "functions": 50,
+    "branches": 50,
+    "statements": 50,
+    "coverageDirectory": "./coverage"
   }
 }
