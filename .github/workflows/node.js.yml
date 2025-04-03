@@ -38,8 +38,5 @@ jobs:
         name: coverage-report
         path: coverage/lcov-report/
 
-    - name: Upload Coverage to Coveralls (Optional)
-      run: npx coveralls < coverage/lcov-report/lcov-report.txt
-
     - name: Run a Simple Check (Optional)
       run: node -e "console.log('Server check successful!')"
