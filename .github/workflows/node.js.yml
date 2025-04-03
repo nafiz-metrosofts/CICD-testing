@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4  # Checkout repository
+      uses: actions/checkout@v4
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4  # Setup Node.js
+      uses: actions/setup-node@v4
       with:
         node-version: 20.x
         cache: 'npm'
@@ -23,17 +23,23 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    - name: Create coverage output directory
+      run: mkdir -p .nyc_output
+
     - name: Run Tests with Coverage
-      run: npm test  # Run tests, which will generate a coverage report
+      run: npm test  # This should run with nyc and generate coverage report
 
     - name: Enforce Minimum Coverage Threshold
-      run: npx nyc report --reporter=text-lcov | tee coverage/lcov-report/lcov-report.txt | npx coveralls
+      run: npx nyc --check-coverage --branches 80 --functions 80 --lines 80 --statements 80 npm test
 
     - name: Upload Coverage Report to GitHub (Optional)
-      uses: actions/upload-artifact@v4  # Upload coverage artifact
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: coverage/lcov-report/
+
+    - name: Upload Coverage to Coveralls (Optional)
+      run: npx coveralls < coverage/lcov-report/lcov-report.txt
 
     - name: Run a Simple Check (Optional)
       run: node -e "console.log('Server check successful!')"
