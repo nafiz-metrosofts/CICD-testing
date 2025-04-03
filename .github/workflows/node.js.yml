@@ -13,6 +13,7 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+      uses: actions/setup-node@v4
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -27,7 +28,7 @@ jobs:
       run: npm test  # This will run the tests with nyc coverage reporting
 
     - name: Upload Coverage Report to GitHub (Optional)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-pages-artifact@v3
       with:
         name: coverage-report
         path: coverage/lcov-report/  # Path to the lcov report folder
