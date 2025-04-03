@@ -2,27 +2,45 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-
-// Use a dynamic port or fallback to 3000 for simplicity
 const port = process.env.PORT || 3000;
-const host = "127.0.0.1";  // Loopback for local development
+const host = "127.0.0.1";
 
-// Serve static files first, so they can be accessed directly
-app.use(express.static(path.join(__dirname, "public")));
+let clickCount = 0;  // Simple in-memory counter
 
-// // Define the root route (Hello World)
-// app.get("/", (req, res) => {
-//   res.status(200).send("Hello World!"); // Send plain text response
-// });
+// 🛠 Middleware: Logs all requests
+app.use((req, res, next) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  next();
+});
 
-// Serve the index.html for the /counter route
+// ✅ Route: Hello World
+app.get("/", (req, res) => {
+  res.status(200).send("Hello World!");
+});
+
+// ✅ Route: Serve counter HTML
 app.get("/counter", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Start the server on the specified port
+// ✅ API Route: Simple Counter
+app.get("/api/counter", (req, res) => {
+  res.json({ count: clickCount });
+});
+
+app.post("/api/counter/increment", (req, res) => {
+  clickCount++;
+  res.json({ count: clickCount });
+});
+
+// ❌ 404 Handler (Covers Undefined Routes)
+app.use((req, res) => {
+  res.status(404).json({ error: "Not Found" });
+});
+
+// Start server
 const server = app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${server.address().port}`);
 });
 
-module.exports = server;  // Export server for tests
+module.exports = server;

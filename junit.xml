@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.752">
+  <testsuite name="GET /counter" errors="0" failures="0" skipped="0" timestamp="2025-04-03T05:54:41" time="1.154" tests="1">
+    <testcase classname="GET /counter should return a 200 status and the index.html file" name="GET /counter should return a 200 status and the index.html file" time="0.044">
+    </testcase>
+  </testsuite>
+  <testsuite name="GET /counter" errors="0" failures="0" skipped="0" timestamp="2025-04-03T05:54:41" time="1.17" tests="3">
+    <testcase classname="GET /counter should return a 200 status and contain &apos;Click Counter&apos; message" name="GET /counter should return a 200 status and contain &apos;Click Counter&apos; message" time="0.043">
+    </testcase>
+    <testcase classname="GET /counter should have a button with &apos;Click Me&apos; text" name="GET /counter should have a button with &apos;Click Me&apos; text" time="0.006">
+    </testcase>
+    <testcase classname="GET /counter should return valid HTML structure" name="GET /counter should return valid HTML structure" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="Server Tests" errors="0" failures="0" skipped="0" timestamp="2025-04-03T05:54:41" time="1.19" tests="5">
+    <testcase classname="Server Tests should return Hello World on GET /" name="Server Tests should return Hello World on GET /" time="0.043">
+    </testcase>
+    <testcase classname="Server Tests should return counter page on GET /counter" name="Server Tests should return counter page on GET /counter" time="0.01">
+    </testcase>
+    <testcase classname="Server Tests should return the counter value on GET /api/counter" name="Server Tests should return the counter value on GET /api/counter" time="0.007">
+    </testcase>
+    <testcase classname="Server Tests should increment counter on POST /api/counter/increment" name="Server Tests should increment counter on POST /api/counter/increment" time="0.015">
+    </testcase>
+    <testcase classname="Server Tests should return 404 on invalid route" name="Server Tests should return 404 on invalid route" time="0.006">
+    </testcase>
+  </testsuite>
+</testsuites>
