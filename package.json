@@ -4,15 +4,21 @@
   "private": "true",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --exit tests/*",
+    "test": "jest",
     "start": "node server.js"
   },
   "license": "MIT",
   "devDependencies": {
+    "jest": "^29.7.0",
     "mocha": "^10.2.0",
     "supertest": "^6.3.4"
   },
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js"
+    ]
   }
 }

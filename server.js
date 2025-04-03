@@ -2,16 +2,25 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const port = process.env.PORT || 5000;
+
+// Use a dynamic port or fallback to 5000
+const port = process.env.PORT || 0;  // 0 lets the OS pick any free port
 const host = "0.0.0.0";
 
-// Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
+  res.send({
+    message: "Hello World!",
+  });
+});
+
+app.get("/counter", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(port, host, () => {
-  console.log(`Server running at http://${host}:${port}`);
+const server = app.listen(port, host, () => {
+  console.log(`Server running at http://${host}:${server.address().port}`);
 });
+
+module.exports = server;  // Export server for tests
